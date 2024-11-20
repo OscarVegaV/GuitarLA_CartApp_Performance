@@ -19,12 +19,10 @@ function App() {
   }, [] )
   */
 
-
   return (
   
     <>
     
-      {/* Render the Header component */}
       <Header />  
 
       <main className="container-xl mt-5">
@@ -34,8 +32,11 @@ function App() {
 
         <div className="row mt-5">
           {/* Render multiple Guitar components | Note: Only expressions are allowed inside JSX, not statements */}
-          {data.map(() => (
-            <Guitar />
+          {data.map((guitar) => (
+            <Guitar
+            key={guitar.id}
+            guitar={guitar}
+            />
           ))}
         </div>
       </main>
