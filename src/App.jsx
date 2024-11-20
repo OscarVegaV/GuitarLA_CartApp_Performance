@@ -1,9 +1,28 @@
+// Import necessary modules and components
+
+import { useState } from "react"; // React hook for managing state
 import Header from "./components/Header"; // Import Header component
 import Guitar from "./components/Guitar"; // Import Guitar component
+import { db } from "./data/db"; // Import the database of guitars
 
 function App() {
+
+    // Initialize state with the database (db) data
+    const [data, setData] = useState([db]);// State to store guitar collection
+
+  /*   // Initialize state with the database (db) data
+  // Use with: import { useEffect } from "react";
+  const [data, setData] = useState([]);// State to store guitar collection
+
+  useEffect (() => {
+    setData(db)
+  }, [] )
+  */
+
+
   return (
     <>
+    
       {/* Render the Header component */}
       <Header />  
 
