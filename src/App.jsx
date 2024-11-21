@@ -1,10 +1,10 @@
 // Import necessary modules and components
-
 import { useState } from "react"; // React hook for managing state
 import Header from "./components/Header"; // Import Header component
 import Guitar from "./components/Guitar"; // Import Guitar component
 import { db } from "./data/db"; // Import the database of guitars
 
+// App component: Displays the guitar collection, manages the cart state, and renders the header and footer
 function App() {
 
   // Initialize state with the database (db) data
@@ -19,10 +19,12 @@ function App() {
   }, [] )
   */
 
-  // State to manage items added to the cart
-  const [cart, setCart] = useState([]); //state to cart 
+  // Cart state: stores selected items with their quantity
+  const [cart, setCart] = useState([]); 
 
-  // Function to handle adding items to the cart
+  // Function to add items to the cart
+  // If the item is already in the cart, it increases its quantity by 1
+  // Otherwise, it adds the item to the cart with an initial quantity of 1
   function addToCart(item) {
     // Check if the item already exists in the cart
     const itemExist = cart.findIndex(guitar => guitar.id === item.id );
@@ -42,7 +44,9 @@ function App() {
   
     <>
     
-      <Header />  
+      <Header  
+        cart={cart}
+      />  
 
       <main className="container-xl mt-5">
 
