@@ -68,7 +68,7 @@ export const db = [
   {
       id: 10,
       name: 'Campbell',
-      image: 'guitarra_10',
+      image: 'guitar_10',
       description: 'Morbi ornare augue nisl, vel elementum dui mollis vel. Curabitur non ex id eros fermentum hendrerit.',
       price: 349,
   },

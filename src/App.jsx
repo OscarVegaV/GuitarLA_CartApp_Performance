@@ -7,8 +7,8 @@ import { db } from "./data/db"; // Import the database of guitars
 
 function App() {
 
-    // Initialize state with the database (db) data
-    const [data, setData] = useState(db);// State to store guitar collection
+  // Initialize state with the database (db) data
+  const [data, setData] = useState(db);// State to store guitar collection
 
   /*   // Initialize state with the database (db) data
   // Use with: import { useEffect } from "react";
@@ -18,6 +18,7 @@ function App() {
     setData(db)); // Set data when component mounts
   }, [] )
   */
+  const [cart, setCart] = useState([]); //state to cart 
 
   return (
   
@@ -36,6 +37,7 @@ function App() {
             <Guitar
             key={guitar.id}
             guitar={guitar}
+            setCart={setCart}
             />
           ))}
         </div>
