@@ -1,5 +1,5 @@
 // Guitar component: Displays individual guitar details and includes an "Add to Cart" button
-export default function Guitar({ guitar, setCart }) {
+export default function Guitar({ guitar, addToCart }) {
   // Destructure the guitar object to extract properties
   const { id, name, image, description, price } = guitar;
 
@@ -11,18 +11,19 @@ export default function Guitar({ guitar, setCart }) {
       <div className="col-4">
         <img
           className="img-fluid"
-          src={`/img/${image}.jpg`}
-          alt="image guitar"
+          src={`/img/${image}.jpg`} // Display guitar image
+          alt="image guitar" // Accessible alternative text
         />
       </div>
       <div className="col-8">
-        <h3 className="text-black fs-4 fw-bold text-uppercase">{name}</h3>
+        <h3 className="text-black fs-4 fw-bold text-uppercase">{name}</h3> {/* Guitar name */}
         <p>{description}</p>
-        <p className="fw-black text-primary fs-3">${price}</p>
+        <p className="fw-black text-primary fs-3">${price}</p> {/* Guitar price */}
         <button 
           type="button" 
           className="btn btn-dark w-100" 
-          onClick={() => setCart(prevCart => [...prevCart, guitar])} >
+          onClick={() => addToCart(guitar)} // Trigger addToCart function on button click
+        >
           Agregar al Carrito
         </button>
       </div>

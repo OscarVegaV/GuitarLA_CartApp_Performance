@@ -18,7 +18,25 @@ function App() {
     setData(db)); // Set data when component mounts
   }, [] )
   */
+
+  // State to manage items added to the cart
   const [cart, setCart] = useState([]); //state to cart 
+
+  // Function to handle adding items to the cart
+  function addToCart(item) {
+    // Check if the item already exists in the cart
+    const itemExist = cart.findIndex(guitar => guitar.id === item.id );
+    // If item exists, increase its quantity
+    if (itemExist >= 0) {
+      const updatedCart = [...cart];
+      updatedCart[itemExist].quantity++;
+      setCart(updatedCart); // Update cart state with the modified cart
+    } else {
+      // If item doesn't exist, set its quantity to 1 and add it to the cart
+      item.quantity = 1;      
+      setCart([...cart, item]);
+    }    
+  }
 
   return (
   
@@ -35,9 +53,10 @@ function App() {
           {/* Render multiple Guitar components | Note: Only expressions are allowed inside JSX, not statements */}
           {data.map((guitar) => (
             <Guitar
-            key={guitar.id}
-            guitar={guitar}
+            key={guitar.id} // Unique key for each guitar
+            guitar={guitar}  // Pass guitar details as props
             setCart={setCart}
+            addToCart={addToCart} // Pass addToCart function as prop
             />
           ))}
         </div>
