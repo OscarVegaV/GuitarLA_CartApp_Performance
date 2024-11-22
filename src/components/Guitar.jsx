@@ -10,9 +10,9 @@ export default function Guitar({ guitar, addToCart }) {
       {/* Guitar card: includes image, details, and action button */}
       <div className="col-4">
         <img
-          className="img-fluid"
+          className="img-fluid img-zoom"
           src={`/img/${image}.jpg`} // Display guitar image
-          alt="image guitar" // Accessible alternative text
+          alt={`Image of ${name}`} // Accessible alternative text
         />
       </div>
       <div className="col-8">

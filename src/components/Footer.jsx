@@ -1,7 +1,7 @@
 export default function Footer() {
 
   return (
-    <footer className="bg-dark footer">
+    <footer className="bg-dark footer mt-3">
       <div className="container-xl text-center">
         <img
           className="img-fluid footer-logo"
