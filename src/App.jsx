@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"; // React hook for managing state
 import Header from "./components/Header"; // Import Header component
 import Guitar from "./components/Guitar"; // Import Guitar component
+import Footer from "./components/Footer";
 import { db } from "./data/db"; // Import the database of guitars
 
 // App component: Handles application state and renders Header, Guitar collection, and Footer
@@ -87,7 +88,8 @@ function App() {
   }; 
   return (
   
-    <>    
+    <>  
+      {/* Header section */}  
       <Header 
         cart={cart} 
         removeFromCart={removeFromCart}
@@ -115,13 +117,7 @@ function App() {
       </main>
 
       {/* Footer section */}
-      <footer className="bg-dark mt-5 py-5">
-        <div className="container-xl">
-          <p className="text-white text-center fs-4 mt-4 m-md-0">
-            GuitarLA - Todos los derechos Reservados
-          </p>
-        </div>
-      </footer>
+      < Footer />
     </>
   );
 };

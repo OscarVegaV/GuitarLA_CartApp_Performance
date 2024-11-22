@@ -754,7 +754,7 @@ button:not(:disabled),
   }
 }
 .header {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/header.jpg");
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/img/header.jpg");
   
   background-position: 50%;
   background-size: cover;
@@ -775,4 +775,28 @@ button:not(:disabled),
     animation-name: animarImagen;
     z-index: 10;
   }
+}
+
+.footer{
+  padding-top: 2rem;
+}
+
+.footer-logo{
+  height: 135px;
+}
+.share{
+  padding-bottom: 1rem;
+}
+.share a{   
+  height: 3rem;
+  width: 3rem;
+  line-height: 3rem;
+  font-size: 1.5rem;
+  border: .1rem solid rgba(255, 255, 255, 0.3);
+  margin: .3rem;
+  border-radius: 50%;
+}
+.share a:hover{     
+  color: var(--bs-black);
+  background: var(--bs-primary);
 }
