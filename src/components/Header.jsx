@@ -1,7 +1,14 @@
-import Guitar from "./Guitar";
+// Import useMemo hook for optimized state calculations
+import { useMemo } from "react";
 
-// Header component: Displays the logo, navigation, and a dropdown to view and manage cart items.
-export default function Header({cart}) {
+// Header component: Displays navigation and a cart dropdown
+export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart }) {
+
+  // Check if the cart is empty using a derived state
+  const isEmpty = useMemo(() => cart.length === 0, [cart]);
+
+  // Calculate the total cost of items in the cart
+  const cartTotal = useMemo(() => cart.reduce((total, item) => total + (item.quantity * item.price), 0), [cart]);
 
   // Render the cart dropdown: If the cart is empty, display a message. Otherwise, show cart items in a table.
   return (
@@ -24,12 +31,12 @@ export default function Header({cart}) {
             <div className="cart">
               <img
                 className="img-fluid"
-                src="./public/img/cart.png"
+                src="/img/cart.png"
                 alt="imagen cart"
               />
               {/* Cart dropdown */}
               <div id="cart" className="bg-white p-3">
-                {cart.length === 0 ? (
+                {isEmpty ? (
                   // Message for an empty cart
                   <p className="text-center">El carrito está vacío</p>
                 ) : (
@@ -48,7 +55,6 @@ export default function Header({cart}) {
                       <tbody>
                         {cart.map((guitar) => (
                           <tr key={guitar.id}>
-                            {/* Image of the guitar in the cart */}
                             <td>
                               <img
                                 className="img-fluid"
@@ -56,13 +62,13 @@ export default function Header({cart}) {
                                 alt="image guitar"
                               />
                             </td>
-                            <td>{guitar.name}</td> {/* Guitar name */}
-                            <td className="fw-bold"> ${guitar.price}</td> {/* Price */}
-                            {/* Quantity controls */}
+                            <td>{guitar.name}</td>
+                            <td className="fw-bold"> ${guitar.price}</td>
                             <td className="flex align-items-start gap-4">
                               <button
                                 type="button"
                                 className="btn btn-dark"
+                                onClick={() => decreaseQuantity(guitar.id)}
                               >
                                 -
                               </button>
@@ -70,15 +76,16 @@ export default function Header({cart}) {
                               <button
                                 type="button"
                                 className="btn btn-dark"
+                                onClick={() => increaseQuantity(guitar.id)}
                               >
                                 +
                               </button>
                             </td>
-                            {/* Button to remove the item */}
                             <td>
                               <button
                                 className="btn btn-danger"
                                 type="button"
+                                onClick={() => removeFromCart(guitar.id)}
                               >
                                 X
                               </button>
@@ -87,14 +94,12 @@ export default function Header({cart}) {
                         ))}
                       </tbody>
                     </table>
+                    <p className="text-end">
+                      Total pagar: <span className="fw-bold">${cartTotal}</span>
+                    </p>
                   </>
                 )}
-                {/* Total price */}
-                <p className="text-end">
-                  Total pagar: <span className="fw-bold">$899</span>
-                </p>
-                {/* Button to clear the cart */}
-                <button className="btn btn-dark w-100 mt-3 p-2">
+                <button className="btn btn-dark w-100 mt-3 p-2" onClick={clearCart}>
                   Vaciar Carrito
                 </button>
               </div>
