@@ -1,15 +1,6 @@
-// Import useMemo hook for optimized state calculations
-import { useMemo } from "react";
-
 // Header component: Displays navigation and a cart dropdown
-export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart }) {
-
-  // Check if the cart is empty using a derived state
-  const isEmpty = useMemo(() => cart.length === 0, [cart]);
-
-  // Calculate the total cost of items in the cart
-  const cartTotal = useMemo(() => cart.reduce((total, item) => total + (item.quantity * item.price), 0), [cart]);
-
+export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmpty, cartTotal }) {
+  
   // Render the cart dropdown: If the cart is empty, display a message. Otherwise, show cart items in a table.
   return (
     <header className="py-5 header">
